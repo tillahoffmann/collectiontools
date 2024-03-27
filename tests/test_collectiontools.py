@@ -39,7 +39,7 @@ def test_transpose() -> None:
 
 
 def test_map_values():
-    assert ct.map_values({"a": 1, "b": "hello"}, lambda x: 2 * x) == {
+    assert ct.map_values(lambda x: 2 * x, {"a": 1, "b": "hello"}) == {
         "a": 2,
         "b": "hellohello",
     }
@@ -55,5 +55,5 @@ def test_update_and_union():
 
 def test_filter_values():
     assert ct.filter_values(
-        {"a": 1, "b": 2, "c": "hello"}, lambda x: isinstance(x, int)
+        lambda x: isinstance(x, int), {"a": 1, "b": 2, "c": "hello"}
     ) == {"a": 1, "b": 2}

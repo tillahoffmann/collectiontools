@@ -10,14 +10,14 @@ from typing import (
 )
 
 
-def filter_values(x: dict, predicate: Callable) -> dict:
+def filter_values(predicate: Callable, x: dict) -> dict:
     """
-    Filter a dictionary by values.
+    Filter a dictionary by values like :func:`filter` for iterables.
 
     Args:
-        x: Dictionary to filter.
         predicate: Predicate to evaluate on values of :code:`x`. Values are included if
-            :code:`predicate` evaluates to :code:`True` like :func:`filter`.
+            :code:`predicate` evaluates to :code:`True`.
+        x: Dictionary to filter.
 
     Returns:
         Filtered dictionary.
@@ -26,19 +26,19 @@ def filter_values(x: dict, predicate: Callable) -> dict:
 
         >>> from collectiontools import filter_values
         >>>
-        >>> filter_values({"a": 1, "b": 2, "c": "hello"}, lambda x: isinstance(x, int))
+        >>> filter_values(lambda x: isinstance(x, int), {"a": 1, "b": 2, "c": "hello"})
         {'a': 1, 'b': 2}
     """
     return {key: value for key, value in x.items() if predicate(value)}
 
 
-def map_values(x: dict, func: Callable) -> dict:
+def map_values(func: Callable, x: dict) -> dict:
     """
-    Map a function over values of a dictionary.
+    Map a function over values of a dictionary like :func:`map` for iterables.
 
     Args:
-        x: Dictionary whose values to map :code:`func` over.
         func: Function to apply to values of :code:`x`.
+        x: Dictionary whose values to map :code:`func` over.
 
     Returns:
         Dictionary with values obtained by applying :code:`func` to the values of
@@ -48,7 +48,7 @@ def map_values(x: dict, func: Callable) -> dict:
 
         >>> from collectiontools import map_values
         >>>
-        >>> map_values({"a": 1, "b": "hello"}, lambda x: 2 * x)
+        >>> map_values(lambda x: 2 * x, {"a": 1, "b": "hello"})
         {'a': 2, 'b': 'hellohello'}
     """
     return {key: func(value) for key, value in x.items()}
