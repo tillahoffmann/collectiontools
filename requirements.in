@@ -1,0 +1,6 @@
+-e file:.
+black
+pytest
+pytest-cov
+sphinx
+sphinx_book_theme
