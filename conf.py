@@ -1,4 +1,4 @@
-project = "containertools"
+project = "collectiontools"
 html_theme = "sphinx_book_theme"
 extensions = [
     "sphinx.ext.autodoc",

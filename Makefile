@@ -1,6 +1,6 @@
 .PHONY : all docs doctests lint tests
 
-all : docs doctests lint tests
+all : doctests docs lint tests
 
 requirements.txt : requirements.in pyproject.toml
 	pip-compile -v
@@ -17,4 +17,4 @@ lint :
 	black --check .
 
 tests :
-	pytest -v --cov=containertools --cov-report=term-missing --cov-fail-under=100
+	pytest -v --cov=collectiontools --cov-report=term-missing --cov-fail-under=100

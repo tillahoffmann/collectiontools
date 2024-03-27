@@ -24,7 +24,7 @@ def map_values(x: dict, func: Callable) -> dict:
 
     Examples:
 
-        >>> from containertools import map_values
+        >>> from collectiontools import map_values
         >>>
         >>> map_values({"a": 1, "b": "hello"}, lambda x: 2 * x)
         {'a': 2, 'b': 'hellohello'}
@@ -49,7 +49,7 @@ def transpose(x: Union[Mapping, Iterable]) -> Union[dict, list]:
 
     Examples:
 
-        >>> from containertools import transpose
+        >>> from collectiontools import transpose
         >>>
         >>> x = [{"a": 1, "b": "hello"}, {"a": 2, "b": "hello"}]
         >>> y = transpose(x)
@@ -78,7 +78,7 @@ def transpose_to_dict(x: Iterable[Mapping]) -> Dict[Any, List]:
 
     Examples:
 
-        >>> from containertools import transpose_to_dict
+        >>> from collectiontools import transpose_to_dict
         >>>
         >>> transpose_to_dict([{"a": 1, "b": "hello"}, {"a": 2, "b": "hello"}])
         {'a': [1, 2], 'b': ['hello', 'hello']}
@@ -146,7 +146,7 @@ def union(x, y: Optional[Mapping] = None, **kwargs):
 
     Examples:
 
-        >>> from containertools import Delete, union
+        >>> from collectiontools import Delete, union
         >>>
         >>> x = {"a": 3, "b": 9}
         >>> union(x, {"c": "hello"}, a=Delete)
@@ -173,7 +173,7 @@ def update(x: dict, y: Optional[Mapping] = None, **kwargs):
 
     Examples:
 
-        >>> from containertools import Delete, update
+        >>> from collectiontools import Delete, update
         >>>
         >>> x = {"a": 3, "b": 9}
         >>> update(x, {"c": "hello"}, a=Delete)

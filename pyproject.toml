@@ -1,5 +1,5 @@
 [project]
-name = "containertools"
+name = "collectiontools"
 version = "0.1.0"
 
 [tool.setuptools.packages]

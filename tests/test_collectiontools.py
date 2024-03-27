@@ -1,4 +1,4 @@
-import containertools as ct
+import collectiontools as ct
 import pytest
 
 
