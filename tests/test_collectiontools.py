@@ -51,3 +51,9 @@ def test_update_and_union():
     assert "a" not in x
     assert ct.union(x, d=ct.Delete, c=9) == {"c": 9}
     assert "d" in x
+
+
+def test_filter_values():
+    assert ct.filter_values(
+        {"a": 1, "b": 2, "c": "hello"}, lambda x: isinstance(x, int)
+    ) == {"a": 1, "b": 2}
