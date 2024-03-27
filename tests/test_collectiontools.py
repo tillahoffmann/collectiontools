@@ -57,3 +57,9 @@ def test_filter_values():
     assert ct.filter_values(
         lambda x: isinstance(x, int), {"a": 1, "b": 2, "c": "hello"}
     ) == {"a": 1, "b": 2}
+
+
+def test_append_values():
+    x = {}
+    assert ct.append_values(x, {"a": 1, "b": "c"}) == {"a": [1], "b": ["c"]}
+    assert ct.append_values(x, {"a": 2, "b": "d"}) == {"a": [1, 2], "b": ["c", "d"]}

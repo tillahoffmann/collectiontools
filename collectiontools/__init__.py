@@ -10,6 +10,32 @@ from typing import (
 )
 
 
+def append_values(x: Dict[Any, List], y: Mapping) -> Dict[Any, List]:
+    """
+    Append values to a dictionary of lists.
+
+    Args:
+        x: Dictionary to append to.
+        y: Values to append.
+
+    Returns:
+        Input dictionary :code:`x` with values of :code:`y` appended.
+
+    Examples:
+
+        >>> from collectiontools import append_values
+        >>>
+        >>> x = {}
+        >>> append_values(x, {"a": 1, "b": "c"})
+        {'a': [1], 'b': ['c']}
+        >>> append_values(x, {"a": 2, "b": "d"})
+        {'a': [1, 2], 'b': ['c', 'd']}
+    """
+    for key, value in y.items():
+        x.setdefault(key, []).append(value)
+    return x
+
+
 def filter_values(predicate: Callable, x: dict) -> dict:
     """
     Filter a dictionary by values like :func:`filter` for iterables.
