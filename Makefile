@@ -1,6 +1,6 @@
-.PHONY : all docs doctests lint tests
+.PHONY : all dist docs doctests lint tests
 
-all : doctests docs lint tests
+all : doctests docs lint tests dist
 
 requirements.txt : requirements.in pyproject.toml
 	pip-compile -v
@@ -18,3 +18,7 @@ lint :
 
 tests :
 	pytest -v --cov=collectiontools --cov-report=term-missing --cov-fail-under=100
+
+dist :
+	python -m build
+	twine check dist/*
