@@ -1,6 +1,8 @@
 -e file:.
 black
+pip-tools
 pytest
 pytest-cov
 sphinx
 sphinx_book_theme
+twine

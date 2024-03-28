@@ -38,3 +38,5 @@ jobs:
       run: make docs
     - name: Run doctests
       run: make doctests
+    - name: Build package
+      run: make dist
