@@ -8,4 +8,4 @@ sphinx:
   configuration: conf.py
 python:
   install:
-    - requirements: docs/requirements.txt
+    - requirements: requirements.txt
