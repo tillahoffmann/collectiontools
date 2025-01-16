@@ -58,13 +58,14 @@ def filter_values(predicate: Callable, x: dict) -> dict:
     return {key: value for key, value in x.items() if predicate(value)}
 
 
-def map_values(func: Callable, x: dict) -> dict:
+def map_values(func: Callable, x: dict, recursive: bool = False) -> dict:
     """
     Map a function over values of a dictionary like :func:`map` for iterables.
 
     Args:
         func: Function to apply to values of :code:`x`.
         x: Dictionary whose values to map :code:`func` over.
+        recursive: Apply :code:`func` recursively to nested dictionaries.
 
     Returns:
         Dictionary with values obtained by applying :code:`func` to the values of
@@ -76,8 +77,18 @@ def map_values(func: Callable, x: dict) -> dict:
         >>>
         >>> map_values(lambda x: 2 * x, {"a": 1, "b": "hello"})
         {'a': 2, 'b': 'hellohello'}
+        >>>
+        >>> map_values(lambda x: 2 * x, {"a": {"b": 3}}, recursive=True)
+        {'a': {'b': 6}}
     """
-    return {key: func(value) for key, value in x.items()}
+    return {
+        key: (
+            map_values(func, value, recursive)
+            if recursive and isinstance(value, dict)
+            else func(value)
+        )
+        for key, value in x.items()
+    }
 
 
 def transpose(x: Union[Mapping, Iterable]) -> Union[dict, list]:
