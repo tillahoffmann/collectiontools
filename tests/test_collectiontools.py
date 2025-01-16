@@ -43,6 +43,12 @@ def test_map_values():
         "a": 2,
         "b": "hellohello",
     }
+    assert ct.map_values(
+        lambda x: 2 * x, {"a": 1, "b": {"c": "hello"}}, recursive=True
+    ) == {
+        "a": 2,
+        "b": {"c": "hellohello"},
+    }
 
 
 def test_update_and_union():
