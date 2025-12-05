@@ -2,9 +2,6 @@
 
 all : doctests docs lint tests dist
 
-requirements.txt : requirements.in pyproject.toml
-	pip-compile -v
-
 docs :
 	rm -rf docs/_build
 	sphinx-build -vW . docs/_build
