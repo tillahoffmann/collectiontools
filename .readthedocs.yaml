@@ -8,7 +8,6 @@ build:
     pre_install:
       - pip install uv
     install:
-      - uv sync --all-groups
-      - uv pip install -e .
+      - uv pip install --system --group dev -e .
 sphinx:
   configuration: conf.py
