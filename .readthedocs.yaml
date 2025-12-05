@@ -8,6 +8,7 @@ build:
     pre_install:
       - pip install uv
     install:
-      - uv pip install --system --group dev -e .
-sphinx:
-  configuration: conf.py
+      - uv sync --all-groups
+      - uv pip install -e .
+    post_build:
+      - uv run sphinx-build -b html . $READTHEDOCS_OUTPUT/html
