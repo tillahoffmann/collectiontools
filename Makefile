@@ -1,6 +1,6 @@
-.PHONY : all dist docs doctests lint tests
+.PHONY : all dist docs doctests lint tests typecheck
 
-all : doctests docs lint tests dist
+all : doctests docs lint tests dist typecheck
 
 docs :
 	rm -rf docs/_build
@@ -11,11 +11,14 @@ doctests :
 	sphinx-build -b doctest . docs/_build
 
 lint :
-	black --check .
+	ruff format --check .
+	ruff check
+
+typecheck :
+	pyright
 
 tests :
 	pytest -v --cov=collectiontools --cov-report=term-missing --cov-fail-under=100
 
 dist :
-	python -m build
-	twine check dist/*
+	uv build

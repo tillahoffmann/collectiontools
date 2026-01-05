@@ -29,9 +29,15 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install project
-        run: uv sync --all-groups && uv pip install -e .
+        run: |
+          uv sync --all-groups
+          uv pip install -e .
       - name: Lint code
-        run: uv run black --check .
+        run: |
+          uv run ruff format --check .
+          uv run ruff check
+      - name: Run type checks
+        run: uv run pyright
       - name: Run tests
         run: uv run pytest -v --cov=collectiontools --cov-report=term-missing --cov-fail-under=100
       - name: Build documentation

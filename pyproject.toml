@@ -27,9 +27,10 @@ Issues = "https://github.com/tillahoffmann/collectiontools/issues"
 
 [dependency-groups]
 dev = [
-    "black",
+    "pyright>=1.1.407",
     "pytest>=8.0.0",
     "pytest-cov>=4.0.0",
+    "ruff>=0.14.10",
     "sphinx>=7.0.0",
     "sphinx_book_theme",
 ]

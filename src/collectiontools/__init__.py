@@ -159,7 +159,7 @@ def transpose_to_dict(x: Iterable[Mapping]) -> Dict[Any, List]:
     return y
 
 
-def transpose_to_list(x: Mapping[Any, Iterable]) -> List[Dict]:
+def transpose_to_list(x: Mapping[Any, Sequence]) -> List[Dict]:
     """
     Transpose a mapping of iterables to a list of dictionaries.
     """
@@ -179,7 +179,7 @@ def _update_or_union(
 ) -> dict:
     if not inplace:
         x = dict(x)
-    y = y or {}
+    y = dict(y) if y else {}
     y.update(kwargs)
 
     for key, value in y.items():

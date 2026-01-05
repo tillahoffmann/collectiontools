@@ -35,7 +35,7 @@ def test_transpose() -> None:
         )
 
     with pytest.raises(ValueError, match="mapping or iterable"):
-        ct.transpose(7)
+        ct.transpose(7)  # pyright: ignore[reportArgumentType]
 
 
 def test_map_values():
