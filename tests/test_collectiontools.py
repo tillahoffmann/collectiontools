@@ -69,3 +69,12 @@ def test_append_values():
     x = {}
     assert ct.append_values(x, {"a": 1, "b": "c"}) == {"a": [1], "b": ["c"]}
     assert ct.append_values(x, {"a": 2, "b": "d"}) == {"a": [1, 2], "b": ["c", "d"]}
+
+
+def test_dict_product():
+    assert list(ct.dict_product(a=range(2), b="xy")) == [
+        {"a": 0, "b": "x"},
+        {"a": 0, "b": "y"},
+        {"a": 1, "b": "x"},
+        {"a": 1, "b": "y"},
+    ]

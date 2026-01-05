@@ -1,3 +1,4 @@
+import itertools
 from typing import (
     Any,
     Callable,
@@ -6,6 +7,7 @@ from typing import (
     List,
     Mapping,
     Optional,
+    Sequence,
     Union,
 )
 
@@ -252,3 +254,24 @@ class Delete:
         :func:`union` and :func:`update` delete keys from a dictionary if the
         corresponding value is :class:`Delete`.
     """
+
+
+def dict_product(**iterables: Sequence) -> Iterable[dict]:
+    """Cartesian product of named input iterables.
+
+    Args:
+        iterables: Named iterables.
+
+    Yields:
+        Dictionaries representing elements of the Cartesian product.
+
+    Examples:
+
+        >>> from collectiontools import dict_product
+        >>>
+        >>> list(dict_product(a=range(2), b="xy"))
+        [{'a': 0, 'b': 'x'}, {'a': 0, 'b': 'y'}, {'a': 1, 'b': 'x'}, {'a': 1, 'b': 'y'}]
+    """
+    keys = list(iterables)
+    for item in itertools.product(*iterables.values()):
+        yield dict(zip(keys, item))
